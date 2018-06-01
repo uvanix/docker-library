@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  redis-cluster:
+    environment:
+      IP: 0.0.0.0
+    build:
+      context: .
+      network: host
+    hostname: redis-cluster
+    ports:
+      - "7000:7000"
+      - "7001:7001"
+      - "7002:7002"
+      - "7003:7003"
+      - "7004:7004"
+      - "7005:7005"
