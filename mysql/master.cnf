@@ -1,0 +1,26 @@
+[mysqld]
+datadir=/usr/local/mysql/data
+socket=/var/lib/mysql/mysql.sock
+log-bin=master-bin
+server-id=1
+innodb_file_per_table=ON
+skip_name_resolve=ON
+default_storage_engine = InnoDB
+max_allowed_packet = 512M
+max_connections = 2048
+open_files_limit = 65535
+slow_query_log = 1
+slow_query_log_file = /usr/local/mysql/logs/mysql-slow.log
+long_query_time = 1
+symbolic-links=0
+log-error=/usr/local/mysql/logs/mysql-error.log
+pid-file=/var/run/mysqld/mysqld.pid
+character-set-server=utf8mb4
+collation-server = utf8mb4_unicode_ci
+init-connect='SET NAMES utf8mb4'
+sql_mode="NO_ENGINE_SUBSTITUTION,NO_AUTO_CREATE_USER,STRICT_TRANS_TABLES"
+[mysql]
+default-character-set=utf8mb4
+[client]
+default-character-set=utf8mb4
+socket=/var/lib/mysql/mysql.sock

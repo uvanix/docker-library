@@ -1,13 +1,18 @@
-web:
-  image: 'gitlab/gitlab-ce:latest'
-  restart: always
-  environment:
-    GITLAB_OMNIBUS_CONFIG: |
-      gitlab_rails['gitlab_shell_ssh_port'] = 2224
-  ports:
-    - '9090:9090'
-    - '2224:22'
-  volumes:
-    - '/Users/uvans/software/docker/gitlab/gitlab-ce/conf:/etc/gitlab'
-    - '/Users/uvans/software/docker/gitlab/gitlab-ce/logs:/var/log/gitlab'
-    - '/Users/uvans/software/docker/gitlab/gitlab-ce/data:/var/opt/gitlab'
+version: '3'
+
+services:
+  gitlab:
+    image: 'gitlab/gitlab-ce:latest'
+    restart: always
+    hostname: 'gitlab.example.com'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab.example.com:9090'
+        gitlab_rails['gitlab_shell_ssh_port'] = 2224
+    ports:
+     - '9090:9090'
+      - '2224:22'
+    volumes:
+      - '/Users/uvans/software/docker-library/gitlab/gitlab-ce/conf:/etc/gitlab'
+      - '/Users/uvans/software/docker-library/gitlab/gitlab-ce/logs:/var/log/gitlab'
+      - '/Users/uvans/software/docker-library/gitlab/gitlab-ce/data:/var/opt/gitlab'
